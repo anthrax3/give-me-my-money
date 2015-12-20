@@ -1,0 +1,23 @@
+{
+  "name": "pay-me-rent",
+  "version": "0.0.1",
+  "authors": [
+    "(Matt Boldt <me@mattboldt.com>)"
+  ],
+  "description": "Paying rent",
+  "moduleType": [
+    "node"
+  ],
+  "license": "(MIT)",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "bootstrap": "v4.0.0-alpha.2",
+    "tether": "~1.1.1"
+  }
+}
