@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Give Me My Money</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://builds.emberjs.com/tags/v1.13.5/ember-template-compiler.js"></script>
+  <script src="http://builds.emberjs.com/tags/v1.13.5/ember.debug.js"></script>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/tether/dist/js/tether.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="javascripts/main.js"></script>
+  
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="bower_components/tether/dist/css/tether.min.css" />
+  <link rel="stylesheet" href="bower_components/tether/dist/css/tether-theme-basic.min.css" />
+  <style>
+    .pmr-container{
+      margin-top: 150px;
+    }
+  </style>
+</head>
+<body>
+
+  <script type="text/x-handlebars">
+    <div class="container pmr-container">
+      <nav class="navbar navbar-dark bg-inverse">
+        <a class="navbar-brand" href="#">Give Me My Money</a>
+      </nav>
+ 
+
+      {{outlet}}
+    </div>
+  </script>
+
+
+  <script type="text/x-handlebars" data-template-name="index">
+    <div class="jumbotron">
+
+      <div class="row">
+        <div class="col-md-6">
+          <form>
+            <fieldset class="form-group">
+              <label> Rent Total: </label>
+              {{input type="number" value=rentTotal class="form-control"}}
+            </fieldset>
+            <fieldset class="form-group">
+              <label> Internet Total: </label>
+              {{input type="number" value=internetTotal class="form-control"}}
+            </fieldset>
+            <fieldset class="form-group">
+              <label> Electricity Total: </label>
+              {{input type="number" value=electTotal class="form-control"}}
+            </fieldset>
+          </form>
+
+          <iframe src="https://player.vimeo.com/video/132784205#t=1m40s" width="10" height="10" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div>
+         <div class="col-md-6">
+
+          <h5>Cortnie pays:</h5>
+          <ul>
+            <li>Austin <strong class="text-success">${{internetThird}}</strong> for internet</li>
+            <li>Austin <strong class="text-success">${{rentThirdHalved}}</strong> for rent</li>
+            <li>To Austin Total: <strong class="text-danger">${{toAustinTotal}}</strong></li>
+            <li>Matt <strong class="text-success">${{electThird}}</strong> for electricity</li>
+            <li>Matt <strong class="text-success">${{rentThirdHalved}}</strong> for rent</li>
+            <li>To Matt Total: <strong class="text-danger">${{toMattTotal}}</strong></li>
+
+          </ul>
+
+          <h5>Matt pays:</h5>
+          <ul>
+            <li>Austin <strong class="text-danger">${{internetThird}}</strong> for internet</li>
+            <li><small>Regular Rent: <strong class="text-success">${{rentHalved}}</strong></small></li>
+            <li><small>Regular Electricity: <strong class="text-success">${{electTotal}}</strong></small></li>
+          </ul>
+
+          <h5>Austin pays:</h5>
+          <ul>
+            <li>Matt <strong class="text-danger">${{electThird}}</strong> for electricity</li>
+            <li><small>Regular Rent: <strong class="text-success">${{rentHalved}}</strong></small></li>
+            <li><small>Regular Internet: <strong class="text-success">${{internetTotal}}</strong></small></li>
+          </ul>
+
+          <hr>
+          
+          <h6>Matt&#39;s Total: ${{mattTotal}}</h6>
+          <h6>Austin&#39;s Total: ${{austinTotal}}</h6>
+          <h6>Cortnie&#39;s Total: ${{cortnieTotal}}</h6>
+          <hr>
+
+          <h5 class="text-success">Grand Total: ${{grandTotal}}</h5>
+
+        </div>
+      </div>
+    </div>
+  </script>
+
+  
+</body>
+</html>
