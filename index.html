@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Give Me My Money</title>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://builds.emberjs.com/tags/v1.13.5/ember-template-compiler.js"></script>
@@ -17,7 +19,7 @@
   <link rel="stylesheet" href="bower_components/tether/dist/css/tether-theme-basic.min.css" />
   <style>
     .pmr-container{
-      margin-top: 150px;
+      margin-top: 75px;
     }
   </style>
 </head>
@@ -55,43 +57,43 @@
             </fieldset>
           </form>
 
-          <iframe src="https://player.vimeo.com/video/132784205#t=1m40s" width="10" height="10" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+          <iframe src="#https://player.vimeo.com/video/132784205#t=1m40s" width="10" height="10" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
         </div>
          <div class="col-md-6">
 
           <h5>Cortnie pays:</h5>
           <ul>
-            <li>Austin <strong class="text-success">${{internetThird}}</strong> for internet</li>
-            <li>Austin <strong class="text-success">${{rentThirdHalved}}</strong> for rent</li>
-            <li>To Austin Total: <strong class="text-danger">${{toAustinTotal}}</strong></li>
-            <li>Matt <strong class="text-success">${{electThird}}</strong> for electricity</li>
-            <li>Matt <strong class="text-success">${{rentThirdHalved}}</strong> for rent</li>
-            <li>To Matt Total: <strong class="text-danger">${{toMattTotal}}</strong></li>
+            <li>Austin <strong class="text-success">${{divide internetTotal 3}}</strong> for internet</li>
+            <li>Austin <strong class="text-success">${{divide rentTotal 3 2}}</strong> for rent</li>
+            <li>To Austin Total: <strong class="text-danger">${{round toAustinTotal}}</strong></li>
+            <li>Matt <strong class="text-success">${{divide electTotal 3}}</strong> for electricity</li>
+            <li>Matt <strong class="text-success">${{divide rentTotal 3 2}}</strong> for rent</li>
+            <li>To Matt Total: <strong class="text-danger">${{round toMattTotal}}</strong></li>
 
           </ul>
 
           <h5>Matt pays:</h5>
           <ul>
-            <li>Austin <strong class="text-danger">${{internetThird}}</strong> for internet</li>
-            <li><small>Regular Rent: <strong class="text-success">${{rentHalved}}</strong></small></li>
-            <li><small>Regular Electricity: <strong class="text-success">${{electTotal}}</strong></small></li>
+            <li>Austin <strong class="text-danger">{{divide internetTotal 3}}</strong> for internet</li>
+            <li><small>Regular Rent: <strong class="text-success">${{divide rentTotal 2}}</strong></small></li>
+            <li><small>Regular Electricity: <strong class="text-success">${{round electTotal}}</strong></small></li>
           </ul>
 
           <h5>Austin pays:</h5>
           <ul>
-            <li>Matt <strong class="text-danger">${{electThird}}</strong> for electricity</li>
-            <li><small>Regular Rent: <strong class="text-success">${{rentHalved}}</strong></small></li>
-            <li><small>Regular Internet: <strong class="text-success">${{internetTotal}}</strong></small></li>
+            <li>Matt <strong class="text-danger">${{divide electTotal 3}}</strong> for electricity</li>
+            <li><small>Regular Rent: <strong class="text-success">${{divide rentTotal 2}}</strong></small></li>
+            <li><small>Regular Internet: <strong class="text-success">${{round internetTotal}}</strong></small></li>
           </ul>
 
           <hr>
           
-          <h6>Matt&#39;s Total: ${{mattTotal}}</h6>
-          <h6>Austin&#39;s Total: ${{austinTotal}}</h6>
-          <h6>Cortnie&#39;s Total: ${{cortnieTotal}}</h6>
+          <h6>Matt&#39;s Total: ${{divide grandTotal 3}}</h6>
+          <h6>Austin&#39;s Total: ${{divide grandTotal 3}}</h6>
+          <h6>Cortnie&#39;s Total: ${{divide grandTotal 3}}</h6>
           <hr>
 
-          <h5 class="text-success">Grand Total: ${{grandTotal}}</h5>
+          <h5 class="text-success">Grand Total: ${{round grandTotal}}</h5>
 
         </div>
       </div>

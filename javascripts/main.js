@@ -19,40 +19,16 @@ App.IndexController = Ember.Controller.extend({
     return total;
   }),
 
-  totalThird: Ember.computed('grandTotal', function(){
-    return this.format(this.third(this.get('grandTotal')));
+  rentThirdHalved: Ember.computed('rentTotal', function(){
+    return this.third(this.get('rentTotal')) / 2;
   }),
 
-  mattTotal: Ember.computed.alias('totalThird'),
-  cortnieTotal: Ember.computed.alias('totalThird'),
-  austinTotal: Ember.computed.alias('totalThird'),
-
-  rentHalved: Ember.computed('rentTotal', function(){
-    return this.format(this.get('rentTotal') / 2);
+  toAustinTotal: Em.computed('internetTotal', 'rentThirdHalved', function(){
+    return this.third(this.get('internetTotal')) + this.get('rentThirdHalved');
   }),
 
-  internetThird: Ember.computed('internetTotal', function(){
-    return this.format(this.third(this.get('internetTotal')));
-  }),
-
-  electThird: Ember.computed('electTotal', function(){
-    return this.format(this.third(this.get('electTotal')));
-  }),
-
-  rentThird: Ember.computed('rentTotal', function(){
-    return this.format(this.third(this.get('rentTotal')));
-  }),
-
-  rentThirdHalved: Ember.computed('rentThird', function(){
-    return this.format(this.get('rentThird') / 2);
-  }),
-
-  toAustinTotal: Em.computed('internetThird', 'rentThirdHalved', function(){
-    return this.format(this.get('internetThird') + this.get('rentThirdHalved'));
-  }),
-
-  toMattTotal: Em.computed('electThird', 'rentThirdHalved', function(){
-    return this.format(this.get('electThird') + this.get('rentThirdHalved'));
+  toMattTotal: Em.computed('electTotal', 'rentThirdHalved', function(){
+    return this.third(this.get('electTotal')) + this.get('rentThirdHalved');
   }),
 
   third: function(amount){
@@ -62,8 +38,24 @@ App.IndexController = Ember.Controller.extend({
 
   format: function(number){
     var rtn = number ? number : 0;
-    return Math.round(Number(rtn) * 100) / 100;
+    return Number(rtn);
   }
 
+});
+
+Ember.Handlebars.helper('round', function(value, options) {
+  var rtn = value ? value : 0;
+  rtn = Math.round(Number(rtn) * 100) / 100;
+  var escaped = Ember.Handlebars.Utils.escapeExpression(rtn);
+  return new Ember.Handlebars.SafeString(escaped);
+});
+
+Ember.Handlebars.helper('divide', function(value, key1, key2) {
+  var rtn = value ? value : 0;
+  rtn = key1 ? rtn / key1 : rtn;
+  rtn = typeof key2 === 'object' ? rtn : rtn / key2;
+  rtn = Math.round(Number(rtn) * 100) / 100;
+  var escaped = Ember.Handlebars.Utils.escapeExpression(rtn);
+  return new Ember.Handlebars.SafeString(escaped);
 });
 
